@@ -1,16 +1,14 @@
-#MediaPlayHelper 
+#MediaPlayHelper<br><br>
 
 封装了一个音乐播放器的库,改良了一下觉得还是挺稳定的.
-
-
 依赖方式1：
-
-  allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	    }
+  allprojects{<br>
+  repositories {<br>
+  ...<br>
+  maven {<br> url 'https://jitpack.io'<br> 
+  }<br>
+    }<br>
+     }<br>
  
  依赖方式2：
  

@@ -5,7 +5,24 @@ MediaPlayerHelper mBuilder = MediaPlayerHelper.builder(this, Uri.parse(mp3));
 mBuilder.setMediaStateChangeListener(onMediaStateChageListener);
 设置回调跟新不同的UI界面
  //播放状态改变    分别是正在播放状态、暂停状态、停止状态(停止状态当我们destroy activity时候确定彻底不用这个helper了release释放的时候会回调这个状态)
-        @Override
+        
+        
+        OnMediaStateChageListener onMediaStateChageListener = new OnMediaStateChageListener() {
+        //进度条改变的值
+        @Override
+        public void onProgressChange(int position) {
+            mProgress.setProgress(position);
+        }
+
+        //播放完成状态
+        @Override
+        public void onPlayCompletion(MediaPlayer mp) {
+            mIb_play.setImageResource(R.drawable.ic_play_arrow_white);
+            mProgress.setProgress(0);
+        }
+
+        //播放状态改变
+        @Override
         public void onPlayChange(MediaPlayerStatus status) {
             switch (status.getStatu() /** 或者直接status也行 */) {
                 case PLAYING:

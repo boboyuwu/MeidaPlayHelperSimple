@@ -1,20 +1,20 @@
 #MediaPlayHelper<br><br>
 
 封装了一个音乐播放器的库,改良了一下觉得还是挺稳定的.
-依赖方式1：
+依赖方式1：<br><br>
   allprojects{<br>
   repositories {<br>
   ...<br>
   maven {<br> url 'https://jitpack.io'<br> 
   }<br>
     }<br>
-     }<br>
+     }<br><br>
  
- 依赖方式2：
+ 依赖方式2：<br>
  
- dependencies {
-	        compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'
-	}
+ dependencies {<br>
+	        compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
+	}<br><br>
  
  
 使用方法在simple里面已经写得很清楚了.

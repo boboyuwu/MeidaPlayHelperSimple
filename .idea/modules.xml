@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyOsSimple.iml" filepath="$PROJECT_DIR$/MyOsSimple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple/app.iml" filepath="$PROJECT_DIR$/simple/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediaplayerlibrary/mediaplayerlibrary.iml" filepath="$PROJECT_DIR$/mediaplayerlibrary/mediaplayerlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple/simple.iml" filepath="$PROJECT_DIR$/simple/simple.iml" />
+    </modules>
+  </component>
+</project>

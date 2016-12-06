@@ -1,5 +1,22 @@
-由于项目需求封装了一个音乐播放器的库,改良了一下觉得还是挺稳定的.
+封装了一个音乐播放器的库,改良了一下觉得还是挺稳定的.
 
+
+依赖方式1：
+
+  allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+ 
+ 依赖方式2：
+ 
+ dependencies {
+	        compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'
+	}
+ 
+ 
 使用方法在simple里面已经写得很清楚了.
 MediaPlayerHelper mBuilder = MediaPlayerHelper.builder(this, Uri.parse(mp3));
 mBuilder.setMediaStateChangeListener(onMediaStateChageListener);

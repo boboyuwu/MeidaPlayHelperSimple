@@ -17,11 +17,11 @@
 	}<br><br>
  
  
-使用方法在simple里面已经写得很清楚了.
-MediaPlayerHelper mBuilder = MediaPlayerHelper.builder(this, Uri.parse(mp3));
-mBuilder.setMediaStateChangeListener(onMediaStateChageListener);
-设置回调跟新不同的UI界面
- //播放状态改变    分别是正在播放状态、暂停状态、停止状态(停止状态当我们destroy activity时候确定彻底不用这个helper了release释放的时候会回调这个状态)
+使用方法在simple里面已经写得很清楚了.<br>
+MediaPlayerHelper mBuilder = MediaPlayerHelper.builder(this, Uri.parse(mp3));<br>
+mBuilder.setMediaStateChangeListener(onMediaStateChageListener);<br>
+设置回调跟新不同的UI界面<br>
+ //播放状态改变    分别是正在播放状态、暂停状态、停止状态(停止状态当我们destroy activity时候确定彻底不用这个helper了release释放的时候会回调这个状态)<br>
         
         
         OnMediaStateChageListener onMediaStateChageListener = new OnMediaStateChageListener() {
@@ -62,14 +62,12 @@ mBuilder.setMediaStateChangeListener(onMediaStateChageListener);
         }
     };
  
-如果需要添加通知栏功能请设置这一句,不设置默认没有这个功能
-mBuilder.isMediaServiceOpen(true);
+如果需要添加通知栏功能请设置这一句,不设置默认没有这个功能<br>
+mBuilder.isMediaServiceOpen(true);<br>
+请在Activity的onDestroy(){  <br>
+    mBuilder.removeObservable(onMediaStateChageListener);    //加上你所设置的回调接口防止内存泄漏<br>
+    mBuilder.releaseMediaPlayer();            //添加这个释放所有播放资源<br>
+}<br>
 
-
-请在Activity的onDestroy(){  
-    mBuilder.removeObservable(onMediaStateChageListener);    //加上你所设置的回调接口防止内存泄漏
-    mBuilder.releaseMediaPlayer();            //添加这个释放所有播放资源
-}
-
-功能不停跟新中....
-好用请star O(∩_∩)O~
+功能不停跟新中....<br>
+好用请star O(∩_∩)O~<br>

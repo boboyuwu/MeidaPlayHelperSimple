@@ -69,7 +69,8 @@ public class MainActivity extends BaseActivity {
         //播放完成状态
         @Override
         public void onPlayCompletion(MediaPlayer mp) {
-            mIb_play.setBackgroundResource(R.drawable.ic_play_arrow_white);
+            mIb_play.setImageResource(R.drawable.ic_play_arrow_white);
+            mProgress.setProgress(0);
         }
 
         //播放状态改变

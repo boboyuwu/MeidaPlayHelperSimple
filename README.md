@@ -8,7 +8,7 @@
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}
+	    }
  
  依赖方式2：
  

@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.boboyu.mediaplayerlibrary.constants.Keys;
 import com.boboyu.mediaplayerlibrary.interfaces.OnMediaStateChageListener;
@@ -132,14 +133,14 @@ public class MediaPlayerHelper implements OnCompletionListener{
     private MediaPlayerHelper(Context context, String uri) {
         mContext = context;
         mUri = Uri.parse(uri);
-        mediaPlayer = MediaPlayer.create(context, mUri);
+        mediaPlayer = MediaPlayer.create(context.getApplicationContext(), mUri);
         mediaPlayer.setOnCompletionListener(this);
     }
 
     private MediaPlayerHelper(Context context, Uri uri) {
         mContext = context;
         mUri = uri;
-        mediaPlayer = MediaPlayer.create(mContext, mUri);
+        mediaPlayer = MediaPlayer.create(context.getApplicationContext(), mUri);
         mediaPlayer.setOnCompletionListener(this);
     }
 
@@ -147,7 +148,7 @@ public class MediaPlayerHelper implements OnCompletionListener{
         if (mediaPlayerHelper == null) {
             synchronized (MediaPlayerHelper.class) {
                 if (mediaPlayerHelper == null) {
-                        mediaPlayerHelper = new MediaPlayerHelper(context.getApplicationContext(), uri);
+                        mediaPlayerHelper = new MediaPlayerHelper(context, uri);
                         return mediaPlayerHelper;
                 }
             }
@@ -161,7 +162,7 @@ public class MediaPlayerHelper implements OnCompletionListener{
         if (mediaPlayerHelper == null) {
             synchronized (MediaPlayerHelper.class) {
                 if (mediaPlayerHelper == null) {
-                        mediaPlayerHelper = new MediaPlayerHelper(context.getApplicationContext(), uri);
+                        mediaPlayerHelper = new MediaPlayerHelper(context, uri);
                         return mediaPlayerHelper;
                 }
             }
@@ -177,9 +178,10 @@ public class MediaPlayerHelper implements OnCompletionListener{
         if (playerStatus == MEDIAPLAYER_STOP) {
             //mediaPlayer.setOnPreparedListener(this);
             Log.d(TAG,"play");
+
+            mediaPlayer.start();
             //是否开启通知
             initMediaService();
-            mediaPlayer.start();
             playerStatus = MEDIAPLAYER_PLAY;
             sendPlayStatusMessage(playerStatus);
             startProgressTask();
@@ -191,8 +193,8 @@ public class MediaPlayerHelper implements OnCompletionListener{
             stopProgressTask();
         }else if(playerStatus == MEDIAPLAYER_PAUSE){
             Log.d(TAG,"resume");
-            initMediaService();
             mediaPlayer.start();
+            initMediaService();
             playerStatus = MEDIAPLAYER_PLAY;
             sendPlayStatusMessage(playerStatus);
             startProgressTask();
@@ -201,10 +203,11 @@ public class MediaPlayerHelper implements OnCompletionListener{
     }
 
     private void initMediaService() {
-        Log.d(TAG,"isServiceToggleOn:"+isServiceToggleOn);
+        //Log.d(TAG,"isServiceToggleOn:"+isServiceToggleOn);
         if(isServiceToggleOn){
             Intent intent;
-            if (!isServiceWork(mContext.getApplicationContext(), MediaService.class.getName())) {
+            Toast.makeText(mContext,"isServiceWork:"+isServiceWork(mContext.getApplicationContext(), MediaService.class.getName()),Toast.LENGTH_SHORT).show();
+            if (!isServiceWork(mContext, MediaService.class.getName())) {
                 intent = new Intent(mContext, MediaService.class);
                 intent.putExtra(Keys.URI, mUri.toString());
                 intent.putExtra(Keys.ID, "215432");
@@ -224,14 +227,16 @@ public class MediaPlayerHelper implements OnCompletionListener{
         boolean isWork = false;
         ActivityManager myAM = (ActivityManager) mContext
                 .getSystemService(mContext.ACTIVITY_SERVICE);
-        List<RunningServiceInfo> myList = myAM.getRunningServices(40);
+        List<RunningServiceInfo> myList = myAM.getRunningServices(100);
         if (myList.size() <= 0) {
             return false;
         }
         for (int i = 0; i < myList.size(); i++) {
             String mName = myList.get(i).service.getClassName().toString();
+
             if (mName.equals(serviceName)) {
                 isWork = true;
+                Toast.makeText(mContext,"mName:"+mName,Toast.LENGTH_SHORT).show();
                 break;
             }
         }
@@ -361,6 +366,8 @@ public class MediaPlayerHelper implements OnCompletionListener{
         stopProgressTask();
     }
 
+
+    //public void set
 
     public void isMediaServiceOpen(boolean isServiceToggleOn){
         MediaPlayerHelper.this.isServiceToggleOn=isServiceToggleOn;

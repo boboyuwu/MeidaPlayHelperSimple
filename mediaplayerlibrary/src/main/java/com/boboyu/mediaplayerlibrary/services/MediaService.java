@@ -35,8 +35,6 @@ public class MediaService extends Service implements OnMediaStateChageListener {
     MediaPlayerHelper mediaPlayer;
     int playerStatus = StatusStop;
     private String mUri;
-    //private Observable<Boolean> playStatusNotify = RxBus.get().register(RxEventTags.MEDIA_SERVICE_MEDIA_STATUS, Boolean.class);
-    //private Observable<Boolean> closeNotify = RxBus.get().register(RxEventTags.MEDIA_CLOSE_NOTIFY, Boolean.class);
     private RemoteViews mRemoteViews;
     private Notification mNotification;
     private NotificationCompat.Builder mBuilder;
@@ -156,21 +154,18 @@ public class MediaService extends Service implements OnMediaStateChageListener {
                     if(!mediaPlayer.isPlaying()){
                         mediaPlayer.start();
                         playerStatus = StatusPlay;
-                        Log.d(TAG,"==== start ====");
                     }
 
                 } else {
                     if(mediaPlayer.isPlaying()){
                         mediaPlayer.pause();
                         playerStatus = StatusStop;
-                        Log.d(TAG,"==== pause ====");
                     }
                 }
                 break;
             case CommandClose:
                 manger.cancel(TYPE_Customer1);
                 stopSelf();
-                Log.d(TAG,"==== cancel ====");
                 break;
 
         }

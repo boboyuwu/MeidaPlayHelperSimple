@@ -13,8 +13,8 @@
  依赖方式2：<br>
  
  dependencies{<br>
-	    &nbsp;compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
-	    &nbsp;&nbsp;&nbsp;}<br><br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
  
  
 使用方法在simple里面已经写得很清楚了.<br>

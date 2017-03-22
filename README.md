@@ -14,7 +14,7 @@
  
  dependencies{<br>
 	        compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
-	    &nbsp}<br><br>
+	    &nbsp;}<br><br>
  
  
 使用方法在simple里面已经写得很清楚了.<br>

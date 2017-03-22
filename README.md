@@ -5,16 +5,16 @@
   allprojects{<br>
   repositories {<br>
   ...<br>
-  maven {<br> url 'https://jitpack.io'<br> 
-  }<br>
-    }<br>
-     }<br><br>
+  &nbsp;&nbsp;maven {<br> url 'https://jitpack.io'<br> 
+  &nbsp;}<br>
+    &nbsp;}<br>
+     &nbsp;}<br><br>
  
  依赖方式2：<br>
  
  dependencies{<br>
-	    &nbsp;&nbsp;&nbsp;&nbsp;compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
-	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compile 'com.github.boboyuwu:MeidaPlayHelperSimple:v1.0'<br>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
  
  
 使用方法在simple里面已经写得很清楚了.<br>
